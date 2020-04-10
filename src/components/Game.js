@@ -1,24 +1,12 @@
 import React from 'react'
 
-class Square extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        value: null,
-      };
-    }
-    
-    render() {
-      return (
-        <button 
-          className="square" 
-          onClick={() => this.setState({value: 'O'})}
-          >
-            {this.state.value}
-        </button>
-      );
-    }
-  }
+function Square(props) {
+  return (
+    <button className={props.color} onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
+}
   
   class Board extends React.Component {
     
@@ -37,15 +25,44 @@ class Square extends React.Component {
 
         this.state = {
             states: boardStates,
+            player1: true,
         }
     }
 
-    handleClick(){
-
+    handleClick(r,c){
+      for(var i = 5; i >= 0; i--){
+        if(this.state.states[i][c] == '0'){
+          var newStates = this.state.states
+          if(this.state.player1){
+            newStates[i][c] = '1'
+          }
+          else {
+            newStates[i][c] = '2'
+          }
+          this.setState({states: newStates})
+          this.setState({player1: !this.state.player1})
+          return
+        }
+      }
     }
     
-    renderSquare(i) {
-      return <Square value={i} onClick={this.handleClick}/>;
+    renderSquare(r,c) {
+      var squareValue = null;
+      var squareColor = null;
+      if(this.state.states[r][c] == '0'){
+        squareValue = " "
+        squareColor = "square"
+      }
+      else if(this.state.states[r][c] == '1'){
+        squareValue = "O"
+        squareColor = "red-square"
+      }
+      else if(this.state.states[r][c] = '2'){
+        squareValue = "O"
+        squareColor = "yellow-square"
+      }
+        
+      return <Square value={squareValue} onClick={() => this.handleClick(r,c)} color={squareColor}/>;
     }
 
     getRow(board ,i){
@@ -59,7 +76,7 @@ class Square extends React.Component {
         for (let r = 0; r < 6; r++) {
             let row = [];
             for (let c = 0; c < 7; c++) { 
-                row.push(this.renderSquare())
+                row.push(this.renderSquare(r, c))
             }
             board.push(row);
         }
