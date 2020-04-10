@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './components/styles.css'
+import NavBar from './components/NavBar'
+import CTAText from './components/CTAText'
+import Game from './components/Game'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Dilan and Matt's Connect Four
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <NavBar />
+            <CTAText />
+            <Game />
+        </div>
+    );
 }
 
 export default App;

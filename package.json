@@ -4,13 +4,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@smooth-ui/core-sc": "^11.1.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "gh-pages": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "reakit": "^1.0.0-rc.0",
+    "styled-components": "^5.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",
