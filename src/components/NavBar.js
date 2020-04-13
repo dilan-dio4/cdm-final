@@ -1,31 +1,19 @@
-import React from 'react'
-import { Text } from '@smooth-ui/core-sc'
-import {
-    useMenuState,
-    Menu,
-    MenuItem,
-    MenuDisclosure,
-    MenuSeparator,
-} from '@smooth-ui/core-sc'
+import React, { useState } from 'react'
+import { Text, Switch } from '@smooth-ui/core-sc'
 
 
 export default function NavBar()
 {
-  const menu = useMenuState()
+    const [ darkModeChecked, setDarkModeChecked ] = useState(false)
 
     return (
         <div className="NavBar-root">
             <div className="NavBar-elements-container">
-                <Text variant="h2">Dilan and Matt's Connect 4</Text>
-                <>
-                    <MenuDisclosure {...menu}>Preferences</MenuDisclosure>
-                    <Menu {...menu} aria-label="Preferences">
-                        <MenuItem {...menu}>Settings</MenuItem>
-                        <MenuItem {...menu} disabled>Extensions</MenuItem>
-                        <MenuSeparator {...menu} />
-                        <MenuItem {...menu}>Keyboard shortcuts</MenuItem>
-                    </Menu>
-                </>
+                <Text variant="h2">Connect 4 Game</Text>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Text variant="h5" style={{ paddingRight: 20, paddingTop: 4 }}>Dark Mode</Text>
+                    <Switch checked={darkModeChecked} onChange={ () => setDarkModeChecked(!darkModeChecked) } />
+                </div>
             </div>
         </div>
     )

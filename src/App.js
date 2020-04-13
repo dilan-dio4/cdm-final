@@ -4,6 +4,7 @@ import './components/styles.css'
 import NavBar from './components/NavBar'
 import CTAText from './components/CTAText'
 import Game from './components/Game'
+import Footer from './components/Footer'
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <NavBar />
             <CTAText />
             <Game />
+            <Footer />
         </div>
     );
 }
