@@ -142,6 +142,23 @@ function Square(props) {
 
       return
     }
+
+   
+    newGame(){
+      let boardStates = []
+        
+      for(let i = 0; i < 6; i++){
+          let rowStates = []
+          for(let j = 0; j < 7; j++){
+              rowStates.push('0')
+          }
+          boardStates.push(rowStates)
+      }
+
+      this.setState({states: boardStates,player1: true,gameOver: false,winner: 'none'})
+     
+  
+    }
     
     render() {
 
@@ -191,11 +208,17 @@ function Square(props) {
           <div>
             {message}
           </div>
+
+          <button className="new-game" onClick={() => this.newGame()}>
+            New Game
+          </button>
         </div>
 
       );
     }
   }
+
+
 
 export default function Game()
 {
@@ -203,9 +226,7 @@ export default function Game()
     return (
         <div className="game-root">
             <div className="game-board">
-                <Board>
-
-                </Board>
+                <Board></Board>
             </div>
         </div>
     )
